@@ -1,7 +1,7 @@
 
-# Contributing to functions-accelerator-java
+# Contributing to java-functions-accelerator
 
-The functions-accelerator-java project team welcomes contributions from the community. Before you start working with functions-accelerator-java, please
+The java-functions-accelerator project team welcomes contributions from the community. Before you start working with java-functions-accelerator, please
 read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All contributions to this repository must be
 signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on
 as an open-source patch.
@@ -19,7 +19,7 @@ This is a rough outline of what a contributor's workflow looks like:
 Example:
 
 ``` shell
-git remote add upstream https://github.com/sample-accelerators/functions-accelerator-java.git
+git remote add upstream https://github.com/sample-accelerators/java-functions-accelerator.git
 git checkout -b my-new-feature main
 git commit -a
 git push origin my-new-feature

@@ -1,7 +1,7 @@
 accelerator:
   displayName: Java Function Buildpacks Accelerator
   description: Spring-based template function powered by Function Buildpacks for Knative
-  iconUrl: https://raw.githubusercontent.com/sample-accelerators/functions-accelerator-java/main/functions-icon.png
+  iconUrl: https://raw.githubusercontent.com/sample-accelerators/java-functions-accelerator/main/functions-icon.png
   tags:
   - java
   - spring
@@ -54,7 +54,7 @@ accelerator:
       name: includeTap
     dataType: string
     required: true
-    defaultValue: "https://github.com/sample-accelerators/functions-accelerator-java.git"
+    defaultValue: "https://github.com/sample-accelerators/java-functions-accelerator.git"
     
   - name: gitBranch
     label: Git Repository Branch
@@ -131,7 +131,7 @@ engine:
       chain:
         - type: ReplaceText
           substitutions:
-            - text: https://github.com/sample-accelerators/functions-accelerator-java.git
+            - text: https://github.com/sample-accelerators/java-functions-accelerator.git
               with: "#gitUrl"
             - text: main
               with: "#gitBranch"

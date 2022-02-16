@@ -1,9 +1,9 @@
 apiVersion: accelerator.apps.tanzu.vmware.com/v1alpha1
 kind: Accelerator
 metadata:
-  name: functions-accelerator-java
+  name: java-functions-accelerator
 spec:
   git:
-    url: https://github.com/sample-accelerators/functions-accelerator-java
+    url: https://github.com/sample-accelerators/java-functions-accelerator
     ref:
       branch: main
