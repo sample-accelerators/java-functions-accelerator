@@ -1,6 +1,5 @@
-# The name used for this language pack repository when referenced
-# in the UX, and its version
-name: function-accelerators-python
+# BOILERPLATE CODE WIP
+name: function-accelerators-java
 
 # Runtimes is a list of language packs supported by this repository
 runtimes:

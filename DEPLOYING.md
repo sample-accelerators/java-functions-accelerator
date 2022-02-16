@@ -7,13 +7,11 @@
 
 ## Building your function
 
-You can build your function using our provided builder, which already includes buildpacks and an invoker layer.
-
-To do so, you can run this command from the `src/` directory, where `func.py` exists.
+You can build your function using our provided builder, which already includes buildpacks and an invoker layer:
 ```
-pack build my-python-fn --path . --builder ghcr.io/vmware-tanzu/function-buildpacks-for-knative/functions-builder:0.0.8
+pack build my-java-fn --path . --builder ghcr.io/vmware-tanzu/function-buildpacks-for-knative/functions-builder:0.0.8
 ```
-Where `my-python-fn` is the name of your runnable function image, later used by Docker.
+Where `my-java-fn` is the name of your runnable function image, later used by Docker.
 
 ## Local Deployment
 
@@ -24,9 +22,8 @@ This assumes you have Docker Desktop properly installed and running.
 With Docker Desktop running, authenticated, and the ports (default `8080`) available:
 
 ```
-docker run -it --rm -p 8080:8080 my-python-fn
+docker run -it --rm -p 8080:8080 my-java-fn
 ```
-
 ## Testing
 
 With our templates, you should see some HTML or sample text returned indicating a success.

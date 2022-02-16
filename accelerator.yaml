@@ -1,9 +1,10 @@
 accelerator:
-  displayName: Python Function Buildpacks Accelerator
-  description: Python template function powered by Function Buildpacks for Knative
-  iconUrl: https://raw.githubusercontent.com/sample-accelerators/functions-accelerator-python/main/functions-icon.png
+  displayName: Java Function Buildpacks Accelerator
+  description: Spring-based template function powered by Function Buildpacks for Knative
+  iconUrl: https://raw.githubusercontent.com/sample-accelerators/functions-accelerator-java/main/functions-icon.png
   tags:
-  - python
+  - java
+  - spring
   - function
   - serverless
   - knative
@@ -15,7 +16,18 @@ accelerator:
     label: Default function name
     defaultValue: hello
     required: true
-    
+
+  - name: buildType
+    inputType: select
+    label: Project Type
+    choices:
+    - value: maven
+      text: Maven
+    - value: gradle
+      text: Gradle
+    defaultValue: maven
+    required: true
+
   - name: interfaceType
     inputType: select
     label: Event Type
@@ -26,7 +38,7 @@ accelerator:
       text: CloudEvents Function (Experimental)
     defaultValue: http
     required: true
-    
+
   - name: includeTap
     label: "Include TAP deployment resources?"
     inputType: checkbox
@@ -42,7 +54,7 @@ accelerator:
       name: includeTap
     dataType: string
     required: true
-    defaultValue: "https://github.com/sample-accelerators/functions-accelerator-python.git"
+    defaultValue: "https://github.com/sample-accelerators/functions-accelerator-java.git"
     
   - name: gitBranch
     label: Git Repository Branch
@@ -62,22 +74,56 @@ engine:
       chain:
       - type: ReplaceText
         substitutions:
-        - text: "main"
+        - text: "hello()"
+          with: "#functionName + '()'"
+    - include: [ ".mvn/**", "mvnw", "mvnw.bat" ]
+      condition: "#buildType == 'maven'"
+    - include: [ "pom.xml" ]
+      condition: "#buildType == 'maven' && #interfaceType == 'http'"
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: functions-java
           with: "#functionName"
-    - include: [ "cloudevents/func.py" ]
+    - include: [ "cloudevents/pom.xml" ]
+      condition: "#buildType == 'maven' && #interfaceType == 'cloudevents'"
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: functions-java
+          with: "#functionName"
+      - type: RewritePath
+        rewriteTo: "#filename"
+    - include: [ "gradle/**", "gradlew", "gradlew.bat" ]
+      condition: "#buildType == 'gradle'"
+    - include: [ "settings.gradle" ]
+      condition: "#buildType == 'gradle'"
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: functions-java
+          with: "#functionName"
+    - include: [ "build.gradle" ]
+      condition: "#buildType == 'gradle' && #interfaceType == 'http'"
+    - include: [ "cloudevents/build.gradle" ]
+      condition: "#buildType == 'gradle' && #interfaceType == 'cloudevents'"
+      chain:
+      - type: RewritePath
+        rewriteTo: "#filename"
+    - include: [ "cloudevents/Handler.java" ]
       condition: "#interfaceType == 'cloudevents'"
       chain:
       - type: ReplaceText
         substitutions:
-        - text: "main"
-          with: "#functionName"
+        - text: "hello()"
+          with: "#functionName + '()'"
       - type: RewritePath
-        rewriteTo: "'src/func.py'"
+        rewriteTo: "'src/main/java/functions/Handler.java'"
     - include: [ "README.md"]
       chain:
       - type: ReplaceText
         substitutions:
-        - text: functions-python
+        - text: functions-java
           with: "#functionName"
     # TAP files
     - include: [ "config/workload.yaml" ]
@@ -85,7 +131,7 @@ engine:
       chain:
         - type: ReplaceText
           substitutions:
-            - text: https://github.com/sample-accelerators/functions-accelerator-python.git
+            - text: https://github.com/sample-accelerators/functions-accelerator-java.git
               with: "#gitUrl"
             - text: main
               with: "#gitBranch"
