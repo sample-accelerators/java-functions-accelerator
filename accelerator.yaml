@@ -11,10 +11,10 @@ accelerator:
 
   # Accelerator GUI
   options:
-  - name: functionName
+  - name: className
     inputType: text
     label: Default class name
-    defaultValue: hello
+    defaultValue: Hire
     required: true
 
   - name: buildType
@@ -75,7 +75,7 @@ engine:
       - type: ReplaceText
         substitutions:
         - text: "Hire"
-          with: "#functionName"
+          with: "#className"
     - include: [ ".mvn/**", "mvnw", "mvnw.bat" ]
       condition: "#buildType == 'maven'"
     - include: [ "pom.xml" ]
@@ -84,14 +84,14 @@ engine:
       - type: ReplaceText
         substitutions:
         - text: functions-java
-          with: "#functionName"
+          with: "#className"
     - include: [ "cloudevents/pom.xml", "cloudevents/jar-assembly.xml" ]
       condition: "#buildType == 'maven' && #interfaceType == 'cloudevents'"
       chain:
       - type: ReplaceText
         substitutions:
         - text: functions-java
-          with: "#functionName"
+          with: "#className"
       - type: RewritePath
         rewriteTo: "#filename"
     - include: [ "gradle/**", "gradlew", "gradlew.bat" ]
@@ -102,7 +102,7 @@ engine:
       - type: ReplaceText
         substitutions:
         - text: functions-java
-          with: "#functionName"
+          with: "#className"
     - include: [ "build.gradle" ]
       condition: "#buildType == 'gradle' && #interfaceType == 'http'"
     - include: [ "cloudevents/build.gradle" ]
@@ -116,24 +116,24 @@ engine:
       - type: ReplaceText
         substitutions:
         - text: "Hire"
-          with: "#functionName"
+          with: "#className"
       - type: RewritePath
-        rewriteTo: "'src/main/java/functions/' + #functionName + 'Hire.java'"
+        rewriteTo: "'src/main/java/functions/' + #className + '.java'"
     - include: [ "Hire.java" ]
       condition: "#interfaceType == 'http'"
       chain:
       - type: ReplaceText
         substitutions:
         - text: "Hire"
-          with: "#functionName"
+          with: "#className"
       - type: RewritePath
-        rewriteTo: "'src/main/java/functions/' + #functionName + 'Hire.java'"
+        rewriteTo: "'src/main/java/functions/' + #className + '.java'"
     - include: [ "README.md"]
       chain:
       - type: ReplaceText
         substitutions:
         - text: functions-java
-          with: "#functionName"
+          with: "#className"
     # TAP files
     - include: [ "config/workload.yaml" ]
       condition: "#includeTap"
