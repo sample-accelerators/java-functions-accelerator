@@ -13,7 +13,7 @@ accelerator:
   options:
   - name: functionName
     inputType: text
-    label: Default function name
+    label: Default class name
     defaultValue: hello
     required: true
 
@@ -74,8 +74,8 @@ engine:
       chain:
       - type: ReplaceText
         substitutions:
-        - text: "hello()"
-          with: "#functionName + '()'"
+        - text: "Hire"
+          with: "#functionName"
     - include: [ ".mvn/**", "mvnw", "mvnw.bat" ]
       condition: "#buildType == 'maven'"
     - include: [ "pom.xml" ]
@@ -110,15 +110,24 @@ engine:
       chain:
       - type: RewritePath
         rewriteTo: "#filename"
-    - include: [ "cloudevents/Handler.java" ]
+    - include: [ "cloudevents/Hire.java" ]
       condition: "#interfaceType == 'cloudevents'"
       chain:
       - type: ReplaceText
         substitutions:
-        - text: "hello()"
-          with: "#functionName + '()'"
+        - text: "Hire"
+          with: "#functionName"
       - type: RewritePath
-        rewriteTo: "'src/main/java/functions/Handler.java'"
+        rewriteTo: "'src/main/java/functions/' + #functionName + 'Hire.java'"
+    - include: [ "Hire.java" ]
+      condition: "#interfaceType == 'http'"
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: "Hire"
+          with: "#functionName"
+      - type: RewritePath
+        rewriteTo: "'src/main/java/functions/' + #functionName + 'Hire.java'"
     - include: [ "README.md"]
       chain:
       - type: ReplaceText
