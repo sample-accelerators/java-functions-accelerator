@@ -85,7 +85,7 @@ engine:
         substitutions:
         - text: functions-java
           with: "#functionName"
-    - include: [ "cloudevents/pom.xml" ]
+    - include: [ "cloudevents/pom.xml", "cloudevents/jar-assembly.xml" ]
       condition: "#buildType == 'maven' && #interfaceType == 'cloudevents'"
       chain:
       - type: ReplaceText
