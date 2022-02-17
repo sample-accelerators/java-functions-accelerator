@@ -15,6 +15,7 @@ accelerator:
     inputType: text
     label: Default class name
     defaultValue: Hire
+    description: The capitalized name of your desired main class file
     required: true
 
   - name: buildType
@@ -119,7 +120,7 @@ engine:
           with: "#className"
       - type: RewritePath
         rewriteTo: "'src/main/java/functions/' + #className + '.java'"
-    - include: [ "Hire.java" ]
+    - include: [ "src/main/java/functions/Hire.java" ]
       condition: "#interfaceType == 'http'"
       chain:
       - type: ReplaceText
