@@ -78,6 +78,8 @@ engine:
         substitutions:
         - text: "Hire"
           with: "#className"
+    - include: [ "src/main/java/functions/Hire.java"]
+      chain:
       - type: RewritePath
         rewriteTo: "'src/main/java/functions/' + #className + '.java'"
     
