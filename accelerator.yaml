@@ -78,8 +78,8 @@ engine:
         substitutions:
         - text: "Hire"
           with: "#className"
-        - type: RewritePath
-          rewriteTo: "'src/main/java/functions/' + #className + '.java'"
+      - type: RewritePath
+        rewriteTo: "'src/main/java/functions/' + #className + '.java'"
     
     # Maven files
     - include: [ ".mvn/**", "mvnw", "mvnw.bat" ]
