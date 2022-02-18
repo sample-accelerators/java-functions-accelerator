@@ -22,8 +22,6 @@ To see samples of code deployable as a Function (FaaS) experience, visit the [sa
 ### Implementation Details (FAQ)
 To add/remove dependencies, you may use Maven or Gradle for dependency management as with any normal Java / Spring development.
 
-If you would prefer to use Spring's CloudEvent package, you may use the `org.springframework.cloud.function.cloudevent.CloudEventMessageBuilder` instead of the default `io.cloudevents.core.builder.CloudEventBuilder` import.
-
 Instead of arguments in the function definition, the `in` object has attributes that can be populated and accessed.
 
 ## Deploying
