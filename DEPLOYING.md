@@ -29,30 +29,34 @@ docker run -it --rm -p 8080:8080 my-java-fn
 With our templates, you should see some HTML or sample text returned indicating a success.
 
 ### HTTP
-After deploying your function, you can interact with our templates by doing:
-- Single function definition: `curl -X POST localhost:8080`
-- Multiple function definitions: `curl -H "Content-Type: application/json" -X POST localhost:8080/hello`
-  - where `hello` as a path invokes your function's definition
+
+After deploying your function, you can interact with our templates by running:
+```
+curl -w'\n' localhost:8080/hire \
+ -H "Content-Type: application/json" \
+ -d '{"firstName":"John", "lastName":"Doe"}' -i
+ ```
+- Where `/hire` as a path invokes that specific function
 
 ### CloudEvents
-If you are using CloudEvents, save the following snippet as a `cloudevent.json` file:
+
+If you'd like to test this template, you may use this CloudEvent saved as `cloudevent.json`:
 
 ```
 {
     "specversion" : "1.0",
-    "type" : "com.github.pull_request.opened",
-    "source" : "https://github.com/cloudevents/spec/pull",
-    "subject" : "123",
+    "type" : "org.springframework",
+    "source" : "https://spring.io/",
     "id" : "A234-1234-1234",
-    "time" : "2018-04-05T17:31:00Z",
-    "comexampleextension1" : "value",
-    "comexampleothervalue" : 5,
-    "datacontenttype" : "text/plain",
-    "data" : "helloworld"
+    "datacontenttype" : "application/json",
+    "data": {
+        "firstName": "John",
+        "lastName": "Doe"
+    }
 }
 ```
 
-Then you can run:
+After [deploying](https://github.com/vmware-tanzu/function-buildpacks-for-knative/blob/main/DEPLOYING.md) your function as an image, you can test with:
 
 ```
 curl -X POST -H "Content-Type: application/cloudevents+json" -d @cloudevent.json http://localhost:8080

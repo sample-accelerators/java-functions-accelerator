@@ -11,18 +11,11 @@ To begin editing your function, refer to the tree diagram below of the file to m
 ```
 functions-java
 └── src/main/java/functions
-    └── Handler.java // EDIT THIS FILE
+    └── Hire.java // EDIT THIS FILE
+    └── models/
 ```
 
-Inside this file, you will find a function that is invoked by default. For example:
-```
-@Bean
-public Function<String, String> hello() {
-	return in -> "Hello " + in; // YOUR CODE HERE
-}
-```
-
-You may replace the code inside this default function with your logic.
+Inside this file, you will find a main class and function that is invoked by default. Models contains scaffold classes you may edit or delete to build out your Java function. You can change the name of the default class and file, too.
 
 To see samples of code deployable as a Function (FaaS) experience, visit the [samples folder](https://github.com/vmware-tanzu/function-buildpacks-for-knative/tree/main/samples/java).
 

@@ -64,7 +64,7 @@ accelerator:
 engine:
   merge:
     # Core files
-    - include: [ "func.yaml", "LICENSE", "NOTICE", "DEPLOYING.md", ".gitignore" ]
+    - include: [ "func.yaml", "README.md","LICENSE", "NOTICE", "DEPLOYING.md", ".gitignore" ]
     - include: [ "src/**" ]
     
     # Maven files
