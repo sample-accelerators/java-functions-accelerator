@@ -70,6 +70,7 @@ accelerator:
 
 engine:
   merge:
+    # Core files
     - include: [ "func.yaml", "LICENSE", "NOTICE", "DEPLOYING.md", ".gitignore" ]
     - include: [ "src/**" ]
       chain:
@@ -77,6 +78,10 @@ engine:
         substitutions:
         - text: "Hire"
           with: "#className"
+        - type: RewritePath
+          rewriteTo: "'src/main/java/functions/' + #className + '.java'"
+    
+    # Maven files
     - include: [ ".mvn/**", "mvnw", "mvnw.bat" ]
       condition: "#buildType == 'maven'"
     - include: [ "pom.xml" ]
@@ -95,6 +100,8 @@ engine:
           with: "#className"
       - type: RewritePath
         rewriteTo: "#filename"
+
+    # Gradle files
     - include: [ "gradle/**", "gradlew", "gradlew.bat" ]
       condition: "#buildType == 'gradle'"
     - include: [ "settings.gradle" ]
@@ -111,17 +118,10 @@ engine:
       chain:
       - type: RewritePath
         rewriteTo: "#filename"
+
+    # Replace HTTP with CloudEvents
     - include: [ "cloudevents/Hire.java" ]
       condition: "#interfaceType == 'cloudevents'"
-      chain:
-      - type: ReplaceText
-        substitutions:
-        - text: "Hire"
-          with: "#className"
-      - type: RewritePath
-        rewriteTo: "'src/main/java/functions/' + #className + '.java'"
-    - include: [ "src/main/java/functions/Hire.java" ]
-      condition: "#interfaceType == 'http'"
       chain:
       - type: ReplaceText
         substitutions:
