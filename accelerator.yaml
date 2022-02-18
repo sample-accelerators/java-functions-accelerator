@@ -17,7 +17,7 @@ accelerator:
     display: false
     defaultValue: Hire
     description: The capitalized name of your desired main class file
-    required: true
+    required: false
 
   - name: buildType
     inputType: select
