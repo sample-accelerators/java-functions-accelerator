@@ -11,14 +11,6 @@ accelerator:
 
   # Accelerator GUI
   options:
-  - name: className
-    inputType: text
-    label: Default class name
-    display: false
-    defaultValue: Hire
-    description: The capitalized name of your desired main class file
-    required: false
-
   - name: buildType
     inputType: select
     label: Project Type
@@ -74,29 +66,15 @@ engine:
     # Core files
     - include: [ "func.yaml", "LICENSE", "NOTICE", "DEPLOYING.md", ".gitignore" ]
     - include: [ "src/**" ]
-      chain:
-      - type: ReplaceText
-        substitutions:
-        - text: "Hire"
-          with: "#className"
     
     # Maven files
     - include: [ ".mvn/**", "mvnw", "mvnw.bat" ]
       condition: "#buildType == 'maven'"
     - include: [ "pom.xml" ]
       condition: "#buildType == 'maven' && #interfaceType == 'http'"
-      chain:
-      - type: ReplaceText
-        substitutions:
-        - text: functions-java
-          with: "#className"
     - include: [ "cloudevents/pom.xml", "cloudevents/jar-assembly.xml" ]
       condition: "#buildType == 'maven' && #interfaceType == 'cloudevents'"
       chain:
-      - type: ReplaceText
-        substitutions:
-        - text: functions-java
-          with: "#className"
       - type: RewritePath
         rewriteTo: "#filename"
 
@@ -105,11 +83,6 @@ engine:
       condition: "#buildType == 'gradle'"
     - include: [ "settings.gradle" ]
       condition: "#buildType == 'gradle'"
-      chain:
-      - type: ReplaceText
-        substitutions:
-        - text: functions-java
-          with: "#className"
     - include: [ "build.gradle" ]
       condition: "#buildType == 'gradle' && #interfaceType == 'http'"
     - include: [ "cloudevents/build.gradle" ]
@@ -122,18 +95,8 @@ engine:
     - include: [ "cloudevents/Hire.java" ]
       condition: "#interfaceType == 'cloudevents'"
       chain:
-      - type: ReplaceText
-        substitutions:
-        - text: "Hire"
-          with: "#className"
       - type: RewritePath
-        rewriteTo: "'src/main/java/functions/' + #className + '.java'"
-    - include: [ "README.md" ]
-      chain:
-      - type: ReplaceText
-        substitutions:
-        - text: functions-java
-          with: "#className"
+        rewriteTo: "'src/main/java/functions/Hire.java'"
 
     # TAP files
     - include: [ "config/workload.yaml" ]
