@@ -45,7 +45,7 @@ If you'd like to test this template, you may use this CloudEvent saved as `cloud
 ```
 {
     "specversion" : "1.0",
-    "type" : "org.springframework",
+    "type" : "hire",
     "source" : "https://spring.io/",
     "id" : "A234-1234-1234",
     "datacontenttype" : "application/json",
@@ -55,6 +55,7 @@ If you'd like to test this template, you may use this CloudEvent saved as `cloud
     }
 }
 ```
+- Note that you should change the contents of the CloudEvent you're testing against as you update the template.
 
 After [deploying](https://github.com/vmware-tanzu/function-buildpacks-for-knative/blob/main/DEPLOYING.md) your function as an image, you can test with:
 
