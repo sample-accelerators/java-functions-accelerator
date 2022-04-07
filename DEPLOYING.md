@@ -9,7 +9,7 @@
 
 You can build your function using our provided builder, which already includes buildpacks and an invoker layer:
 ```
-pack build my-java-fn --path . --builder ghcr.io/vmware-tanzu/function-buildpacks-for-knative/functions-builder:0.0.8
+pack build my-java-fn --path . --builder ghcr.io/vmware-tanzu/function-buildpacks-for-knative/functions-builder:0.0.9
 ```
 Where `my-java-fn` is the name of your runnable function image, later used by Docker.
 
