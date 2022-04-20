@@ -1,6 +1,6 @@
 accelerator:
-  displayName: Java Function Buildpacks Accelerator
-  description: Spring-based template function powered by Function Buildpacks for Knative
+  displayName: Java Function
+  description: Java function powered by Function Buildpacks for Knative
   iconUrl: https://raw.githubusercontent.com/sample-accelerators/java-functions-accelerator/main/functions-icon.png
   tags:
   - java
@@ -42,7 +42,7 @@ accelerator:
   - name: gitUrl
     label: Git Repository URL
     display: true
-    description: Change this to the Git repository you will use to store this accelerator's files
+    description: Change this to the Git repository you will use to store this function's files
     inputType: text
     dependsOn:
       name: includeTap
@@ -64,17 +64,34 @@ accelerator:
 engine:
   merge:
     # Core files
-    - include: [ "func.yaml", "README.md","LICENSE", "NOTICE", "DEPLOYING.md", ".gitignore" ]
-    - include: [ "src/**" ]
+    - include: [ "src/**", "func.yaml", "LICENSE", "NOTICE", ".gitignore" ]
+
+    # README files
+    - include: [ "README.md", "DEPLOYING.md" ]
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: my-java-fn
+          with: "#artifactId"
+
     
     # Maven files
     - include: [ ".mvn/**", "mvnw", "mvnw.bat" ]
       condition: "#buildType == 'maven'"
     - include: [ "pom.xml" ]
       condition: "#buildType == 'maven' && #interfaceType == 'http'"
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: my-java-fn
+          with: "#artifactId"
     - include: [ "cloudevents/pom.xml", "cloudevents/jar-assembly.xml" ]
       condition: "#buildType == 'maven' && #interfaceType == 'cloudevents'"
       chain:
+      - type: ReplaceText
+        substitutions:
+        - text: my-java-fn
+          with: "#artifactId"
       - type: RewritePath
         rewriteTo: "#filename"
 
@@ -83,6 +100,11 @@ engine:
       condition: "#buildType == 'gradle'"
     - include: [ "settings.gradle" ]
       condition: "#buildType == 'gradle'"
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: my-java-fn
+          with: "#artifactId"
     - include: [ "build.gradle" ]
       condition: "#buildType == 'gradle' && #interfaceType == 'http'"
     - include: [ "cloudevents/build.gradle" ]
@@ -108,7 +130,14 @@ engine:
               with: "#gitUrl"
             - text: main
               with: "#gitBranch"
+            - text: my-java-fn
+              with: "#artifactId"
         - type: RewritePath
           rewriteTo: "'config/' + #filename"
     - include: [ "catalog/catalog-info.yaml" ]
       condition: "#includeTap"
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: my-java-fn
+          with: "#artifactId"
