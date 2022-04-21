@@ -1,15 +1,15 @@
-# Java Accelerator - Function Buildpacks for Knative (v1.0)
+# Java Function - Using Function Buildpacks for Knative
 
-This accelerator generates template files, which enable developers to work with Function Buildpacks
-and deploy a FaaS experience easily.
+This repo contains a simple Java Function that can be built using Function Buildpacks and deployed as a TAP serverless workload.
 
-These template files are generated from VMware's open-source [Function Buildpacks for Knative](https://github.com/vmware-tanzu/function-buildpacks-for-knative) project. 
+This function utilizes the buildpacks provided by VMware's open-source [Function Buildpacks for Knative](https://github.com/vmware-tanzu/function-buildpacks-for-knative) project.
 
 ## Getting Started
 
 To begin editing your function, refer to the tree diagram below of the file to modify:
+
 ```
-functions-java
+my-java-fn
 └── src/main/java/functions
     └── Hire.java // EDIT THIS FILE
     └── models/
@@ -20,15 +20,11 @@ Inside this file, you will find a main class and function that is invoked by def
 To see samples of code deployable as a Function (FaaS) experience, visit the [samples folder](https://github.com/vmware-tanzu/function-buildpacks-for-knative/tree/main/samples/java).
 
 ### Implementation Details (FAQ)
+
 To add/remove dependencies, you may use Maven or Gradle for dependency management as with any normal Java / Spring development.
 
 Instead of arguments in the function definition, the `in` object has attributes that can be populated and accessed.
 
 ## Deploying
+
 Please see [DEPLOYING.md](DEPLOYING.md) on how to build, deploy, and test your newly built function.
-
-## Links
-
-### Reporting Bugs or Vulnerabilities
-* [Bugs, Issues, Missing Features](https://github.com/vmware-tanzu/function-buildpacks-for-knative/issues/)
-* [Only Vulnerabilities](https://github.com/vmware-tanzu/function-buildpacks-for-knative/blob/main/SECURITY.md)
