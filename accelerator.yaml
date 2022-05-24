@@ -74,7 +74,14 @@ engine:
         - text: my-java-fn
           with: "#artifactId"
 
-    
+    # Tiltfile
+    - include: [ "Tiltfile" ]
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: my-java-fn
+          with: "#artifactId"
+
     # Maven files
     - include: [ ".mvn/**", "mvnw", "mvnw.bat" ]
       condition: "#buildType == 'maven'"
