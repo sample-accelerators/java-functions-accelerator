@@ -1,9 +1,9 @@
 apiVersion: accelerator.apps.tanzu.vmware.com/v1alpha1
 kind: Accelerator
 metadata:
-  name: java-function
+  name: java-function-tilt-fix
 spec:
   git:
     url: https://github.com/sample-accelerators/java-functions-accelerator
     ref:
-      branch: bt/add-tiltfile
+      branch: main
