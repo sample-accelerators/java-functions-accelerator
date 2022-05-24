@@ -147,4 +147,3 @@ engine:
         substitutions:
         - text: my-java-fn
           with: "#artifactId"
-    
