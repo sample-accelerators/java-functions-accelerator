@@ -1,5 +1,6 @@
-SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='source-image-location')
-LOCAL_PATH = os.getenv("LOCAL_PATH", default='local-path')
+# You will need to modify this file to enable Tilt live debugging
+SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='source-image-location') # Add your writable repository
+LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
 NAMESPACE = os.getenv("NAMESPACE", default='default')
 
 k8s_custom_deploy(
