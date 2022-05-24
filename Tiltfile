@@ -3,6 +3,8 @@ SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='source-image-location') # Add 
 LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
 NAMESPACE = os.getenv("NAMESPACE", default='default')
 
+allow_k8s_contexts('your-k8s-context') # Replace with your k8s context, else Tilt will warn at boot
+
 k8s_custom_deploy(
     'my-java-fn',
     apply_cmd="tanzu apps workload apply -f config/workload.yaml --live-update" +
