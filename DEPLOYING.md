@@ -18,6 +18,10 @@ Where `my-java-fn` is the name of your runnable function image, later used by Do
 
 ## Local Deployment
 
+### Tilt
+
+You may use [tilt](https://github.com/tilt-dev/tilt) `>v0.27.2` in combination with TAP's VS Code plugin to enable live development features including Application Live View and Live Update.
+
 ### Docker
 
 This assumes you have Docker Desktop properly installed and running.
