@@ -22,6 +22,8 @@ Where `my-java-fn` is the name of your runnable function image, later used by Do
 
 You may use [tilt](https://github.com/tilt-dev/tilt) `>v0.27.2` in combination with TAP's VS Code plugin to enable live development features including Application Live View and Live Update.
 
+You will have to update some fields in the root directory's `Tiltfile` to connect your live session to Kubernetes.
+
 ### Docker
 
 This assumes you have Docker Desktop properly installed and running.
