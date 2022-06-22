@@ -1,9 +1,9 @@
 # You will need to modify this file to enable Tilt live debugging
-SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='source-image-location') # Add your writable repository
+SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='source-image-location') # CHANGEME - replace `source-image-location` with your writable repository
 LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
 NAMESPACE = os.getenv("NAMESPACE", default='default')
 
-allow_k8s_contexts('your-k8s-context') # Replace with your k8s context, else Tilt will warn at boot
+allow_k8s_contexts('your-k8s-context') # CHANGEME - replace `your-k8s-context` with your targeted Kubernetes context
 
 k8s_custom_deploy(
     'my-java-fn',
