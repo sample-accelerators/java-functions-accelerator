@@ -1,8 +1,11 @@
 plugins {
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
 
-group = 'functions'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.vmware.functions'
 version = '0.0.1'
 sourceCompatibility = '11'
 
@@ -10,6 +13,11 @@ repositories {
     mavenCentral()
 }
 
+jar {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
 dependencies {
-    // Add your dependencies here
+    implementation platform('org.springframework.boot:spring-boot-dependencies:2.6.3')
 }
