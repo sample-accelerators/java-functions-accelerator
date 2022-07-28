@@ -75,7 +75,7 @@ engine:
     # Maven files
     - include: [ ".mvn/**", "mvnw", "mvnw.bat" ]
       condition: "#buildType == 'maven'"
-    - include: [ "pom.xml" ]
+    - include: [ "pom.xml", "jar-assembly.xml" ]
       condition: "#buildType == 'maven' && #interfaceType == 'http'"
       chain:
       - type: ReplaceText
