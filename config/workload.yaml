@@ -12,3 +12,7 @@ spec:
       ref:
         branch: main
       url: https://github.com/sample-accelerators/java-functions-accelerator.git
+  build:
+    env:
+      - name: BP_FUNCTION
+        value: functions.Hire
