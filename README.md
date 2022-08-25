@@ -11,7 +11,7 @@ To begin editing your function, refer to the tree diagram below of the file to m
 ```
 my-java-fn
 └── src/main/java/functions
-    └── Hire.java // EDIT THIS FILE
+    └── Handler.java // EDIT THIS FILE
     └── models/
 ```
 

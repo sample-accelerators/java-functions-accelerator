@@ -6,7 +6,7 @@
 	<artifactId>my-java-fn</artifactId>
 	<version>0.0.1</version>
 	<name>my-java-fn</name>
-	<description>Function which will hire a person</description>
+	<description>Function which will handle employees</description>
 	<properties>
 		<java.version>11</java.version>
 		<maven.compiler.source>11</maven.compiler.source>
