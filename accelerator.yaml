@@ -111,11 +111,11 @@ engine:
         rewriteTo: "#filename"
 
     # Replace HTTP with CloudEvents
-    - include: [ "cloudevents/Hire.java" ]
+    - include: [ "cloudevents/Handler.java" ]
       condition: "#interfaceType == 'cloudevents'"
       chain:
       - type: RewritePath
-        rewriteTo: "'src/main/java/functions/Hire.java'"
+        rewriteTo: "'src/main/java/functions/Handler.java'"
 
     # TAP files
     - include: [ "config/workload.yaml" ]
