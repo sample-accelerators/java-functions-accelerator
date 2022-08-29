@@ -1,3 +1,8 @@
+/*
+ * Copyright 2021-2022 VMware, Inc.
+ * SPDX-License-Identifier: BSD-2-Clause
+ */
+
 package functions;
 
 import java.util.function.Function;
@@ -9,8 +14,8 @@ import org.springframework.cloud.function.cloudevent.CloudEventMessageBuilder;
 import org.springframework.messaging.Message;
 
 /*
-This class demonstrates the definition of a function called "hire".
-This function can be accessed by targetting the "/hire" path while
+This class demonstrates the definition of a function called "Handler".
+This function can be accessed by targetting the "/handler" path while
 providing the correct data:
     {
         "specversion" : "1.0",
@@ -26,7 +31,7 @@ providing the correct data:
 If this is the only function defined, it may be accessed via "/"
 path.
 */
-public class Hire implements Function<Message<Person>, Message<Employee>> {
+public class Handler implements Function<Message<Person>, Message<Employee>> {
     @Override
     public Message<Employee> apply(Message<Person> msg) {
         String ceType = (String) msg.getHeaders().get("ce-type");

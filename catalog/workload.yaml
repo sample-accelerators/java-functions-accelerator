@@ -6,6 +6,10 @@ metadata:
     apps.tanzu.vmware.com/workload-type: workload-type
     app.kubernetes.io/part-of: my-java-fn
 spec:
+  build:
+    env:
+    - name: BP_FUNCTION
+      value: functions.Handler
   source:
     git:
       url: git-source-url

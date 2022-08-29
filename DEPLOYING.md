@@ -11,7 +11,7 @@
 You can build your function using our provided builder, which already includes buildpacks and an invoker layer:
 
 ```
-pack build my-java-fn --path . --builder ghcr.io/vmware-tanzu/function-buildpacks-for-knative/functions-builder:0.0.10
+pack build my-java-fn --path . --builder ghcr.io/vmware-tanzu/function-buildpacks-for-knative/functions-builder:0.0.12
 ```
 
 Where `my-java-fn` is the name of your runnable function image, later used by Docker.
@@ -43,12 +43,12 @@ With our functions, you should see some HTML or sample text returned indicating 
 After deploying your function, you can interact with the function by running:
 
 ```
-curl -w'\n' localhost:8080/hire \
+curl -w'\n' localhost:8080/handler \
  -H "Content-Type: application/json" \
  -d '{"firstName":"John", "lastName":"Doe"}' -i
  ```
 
-> Where `/hire` as a path invokes that specific function
+> Where `/handler` as a path invokes that specific function
 
 ### CloudEvents
 
@@ -119,12 +119,12 @@ After deploying your function, you can interact with the function by using:
 ### for HTTP
 
 ```
-curl -w'\n' <URL>/hire \
+curl -w'\n' <URL>/handler \
  -H "Content-Type: application/json" \
  -d '{"firstName":"John", "lastName":"Doe"}' -i
  ```
 
-> Where `/hire` as a path invokes that specific function
+> Where `/handler` as a path invokes that specific function
 
 ### for CloudEvents
 
