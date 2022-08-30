@@ -38,17 +38,14 @@ docker run -it --rm -p 8080:8080 my-java-fn
 
 ### Naming The Function
 
-There is an environment variable called BP_FUNCTION.  Use this to point to the 
-Java class that contains your function. The default is `functions.Hire` which indicates the `functions` package and `Hire` class. 
-Note that you much use this variable in the pack cli when building locally and in the config/workload.yaml file when using the tanzu
-cli (and therefore `tilt up`)
+There is an environment variable BP_FUNCTION.  Use this to point to the Java class that contains your function. 
+Note that you can use this variable in the pack cli when building locally and in the config/workload.yaml file when using the tanzu cli (and also `tilt up`)
 
 ### Java Dependencies
 
-If you need to add dependencies to your Java function, use Maven or Gradle in the normal fashion.  The Maven and Gradle build files
-default to building a fat runnable jar.  This allows your additional dependencies to be included and available during runtime. 
+If you need to add dependencies to your Java function, use Maven or Gradle in the normal fashion.  The Maven and Gradle build files default to building a fat runnable jar.  This allows your additional dependencies to be included and available during runtime. 
 
-For example, you could add the following to pom.xml
+For example, you could add the following to pom.xml:
 
 ```
 <dependencies>
