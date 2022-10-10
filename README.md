@@ -1,5 +1,8 @@
 # Java Function
 
+> **NOTE** This repo has been archived and the sample has moved to:  
+> https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/java-function
+
 This repo contains a simple Java Function that can be deployed as a TAP workload.
 
 This function utilizes the buildpacks provided by VMware's open-source [Function Buildpacks for Knative](https://github.com/vmware-tanzu/function-buildpacks-for-knative) project.
